@@ -13,8 +13,13 @@
 
 namespace bEngine::Core {
     // TODO May Abstract this function because DAMN
-    void initializeApplication(const std::filesystem::path &config_file_path) {
-        load_config(config_file_path);
+    void initializeApplication(const std::variant<std::filesystem::path, std::string_view> &config_file) {
+        try {
+            load_config(std::get<std::filesystem::path>(config_file));
+        } catch (const std::bad_variant_access &) {
+            load_config(std::get<std::string_view>(config_file));
+        }
+
 
         register_variable<int>("width", 240, "Application");
         register_variable<int>("height", 240, "Application");

@@ -23,6 +23,13 @@ namespace bEngine::Core {
         toml_default = toml::parse_file(config_file_path.c_str());
     }
 
+    void load_config(std::string_view config) {
+        type_reference["int"] = typeid(int).hash_code();           // NOLINT(*-narrowing-conversions)
+        type_reference["string"] = typeid(std::string).hash_code();// NOLINT(*-narrowing-conversions)
+        
+        toml_default = toml::parse(config);
+    }
+
     int get_int(const std::string& variable, const std::string& table) {
         //ensure that the requested variable is indeed an int type
         // TODO HANDLE error for unregistered variables and request for wrong types

@@ -9,6 +9,8 @@ endif ()
 
 add_subdirectory(deps/bEngine_lib)
 
-add_executable(Game main.cpp)
+include_directories(include)
+
+add_executable(Game src/main.cpp)
 
 target_link_libraries(Game bEngine_lib)

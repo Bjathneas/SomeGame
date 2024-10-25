@@ -13,6 +13,7 @@
 // clang-format on
 
 #include <filesystem>
+#include <variant>
 
 #include "bEngine/Graphics/Color.h"
 #include "bEngine/Utils/Math.h"
@@ -24,7 +25,7 @@ namespace bEngine::Core {
         float fps{0.0f};
     } Application;
 
-    void initializeApplication(const std::filesystem::path &config_file_path);
+    void initializeApplication(const std::variant<std::filesystem::path, std::string_view> &config_file);
 
     void startApplication();
 

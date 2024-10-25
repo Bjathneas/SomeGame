@@ -65,10 +65,11 @@ namespace bEngine::Core {
         else if (type_map[table][variable] == type_reference["string"])
             load_value_from_toml<std::string>(variable, std::get<std::string>(default_value), table);
         else
-            ERROR(std::string("The type for " + table + "." + "variable" + "is not supported").c_str())
+            ERROR(std::string("The type for " + table + "." + "variable" + " is not supported").c_str())
     }
 
     void load_config(const std::filesystem::path &config_file_path);
+    void load_config(std::string_view config);
 
     int get_int(const std::string &variable, const std::string &table = "toml_default");
 

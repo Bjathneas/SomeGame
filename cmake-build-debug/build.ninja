@@ -49,13 +49,13 @@ cmake_ninja_workdir = /home/benajah/CLionProjects/Game/cmake-build-debug/
 
 build cmake_object_order_depends_target_Game: phony || cmake_object_order_depends_target_bEngine_lib
 
-build CMakeFiles/Game.dir/main.cpp.o: CXX_COMPILER__Game_unscanned_Debug /home/benajah/CLionProjects/Game/main.cpp || cmake_object_order_depends_target_Game
+build CMakeFiles/Game.dir/src/main.cpp.o: CXX_COMPILER__Game_unscanned_Debug /home/benajah/CLionProjects/Game/src/main.cpp || cmake_object_order_depends_target_Game
   DEFINES = -DDEBUG_MODE
-  DEP_FILE = CMakeFiles/Game.dir/main.cpp.o.d
+  DEP_FILE = CMakeFiles/Game.dir/src/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -DTOML_HEADER_ONLY=0
-  INCLUDES = -I/home/benajah/CLionProjects/Game/deps/bEngine_lib/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include
+  INCLUDES = -I/home/benajah/CLionProjects/Game/include -I/home/benajah/CLionProjects/Game/deps/bEngine_lib/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include
   OBJECT_DIR = CMakeFiles/Game.dir
-  OBJECT_FILE_DIR = CMakeFiles/Game.dir
+  OBJECT_FILE_DIR = CMakeFiles/Game.dir/src
 
 
 # =============================================================================
@@ -65,7 +65,7 @@ build CMakeFiles/Game.dir/main.cpp.o: CXX_COMPILER__Game_unscanned_Debug /home/b
 #############################################
 # Link the executable Game
 
-build Game: CXX_EXECUTABLE_LINKER__Game_Debug CMakeFiles/Game.dir/main.cpp.o | deps/bEngine_lib/libbEngine_lib.so /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglfw3.a /usr/lib/librt.a /usr/lib/libm.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglad.a /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libtomlplusplus.a || deps/bEngine_lib/libbEngine_lib.so
+build Game: CXX_EXECUTABLE_LINKER__Game_Debug CMakeFiles/Game.dir/src/main.cpp.o | deps/bEngine_lib/libbEngine_lib.so /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglfw3.a /usr/lib/librt.a /usr/lib/libm.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglad.a /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libtomlplusplus.a || deps/bEngine_lib/libbEngine_lib.so
   FLAGS = -g
   LINK_LIBRARIES = -Wl,-rpath,/home/benajah/CLionProjects/Game/cmake-build-debug/deps/bEngine_lib  deps/bEngine_lib/libbEngine_lib.so  /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglfw3.a  /usr/lib/librt.a  -lm  -ldl  /usr/lib/libGLX.so  /usr/lib/libOpenGL.so  /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglad.a  /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libtomlplusplus.a
   OBJECT_DIR = CMakeFiles/Game.dir
