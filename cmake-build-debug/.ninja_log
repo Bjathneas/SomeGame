@@ -1,0 +1,22 @@
+# ninja log v6
+2	203	1729888378666599272	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Color.cpp.o	93ab16856f043db9
+3	30	1729886152650054387	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Utils/Math.cpp.o	4613a3ab4bafc902
+1	166	1729700948725666817	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Utils/Random.cpp.o	c1ca31c3c1114cbb
+2	429	1729886152646721002	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Utils/Logger.cpp.o	d9faf849cb10f0b2
+2	477	1729888378666599272	CMakeFiles/Game.dir/main.cpp.o	690ed96078682c03
+3	1039	1729886152646721002	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Config.cpp.o	efea24a2bf2431a3
+2	1279	1729888119828855660	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Application.cpp.o	9a0544083d5c5593
+203	333	1729888378866602685	deps/bEngine_lib/libbEngine_lib.so	e5224d12965b29b4
+3	244	1729886152650054387	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Input.cpp.o	42ecacb61afc195c
+477	525	1729888379143274074	Game	87cb7df3613277b4
+1	47	1729888817525598405	build.ninja	68bf4b6e663b589e
+4	140	1729888817525598405	build.ninja	68bf4b6e663b589e
+3	200	1729888817555597325	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Utils/Math.cpp.o	4613a3ab4bafc902
+3	440	1729888817555597325	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Color.cpp.o	93ab16856f043db9
+2	609	1729888817555597325	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Input.cpp.o	42ecacb61afc195c
+2	797	1729888817555597325	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Utils/Logger.cpp.o	d9faf849cb10f0b2
+2	1399	1729888817555597325	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Config.cpp.o	efea24a2bf2431a3
+5	456	1729889108221699266	CMakeFiles/Game.dir/main.cpp.o	690ed96078682c03
+5	1206	1729889108218365985	deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Application.cpp.o	9a0544083d5c5593
+1206	1331	1729889109421680501	deps/bEngine_lib/libbEngine_lib.so	e5224d12965b29b4
+1331	1382	1729889109545011910	Game	87cb7df3613277b4

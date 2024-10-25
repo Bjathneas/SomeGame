@@ -1,0 +1,6 @@
+/home/benajah/CLionProjects/Game/cmake-build-debug/CMakeFiles/Game.dir
+/home/benajah/CLionProjects/Game/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/benajah/CLionProjects/Game/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/benajah/CLionProjects/Game/cmake-build-debug/deps/bEngine_lib/CMakeFiles/bEngine_lib.dir
+/home/benajah/CLionProjects/Game/cmake-build-debug/deps/bEngine_lib/CMakeFiles/edit_cache.dir
+/home/benajah/CLionProjects/Game/cmake-build-debug/deps/bEngine_lib/CMakeFiles/rebuild_cache.dir
