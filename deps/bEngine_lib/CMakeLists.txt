@@ -21,6 +21,9 @@ add_library(bEngine_lib SHARED
         src/Core/Input.cpp
         src/Utils/Math.cpp
         src/Graphics/Color.cpp
+        src/Graphics/Shader.cpp
+        src/Graphics/VBO.cpp
+        src/Graphics/VAO.cpp
 )
 
 target_include_directories(bEngine_lib PUBLIC include)

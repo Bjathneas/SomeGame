@@ -18,6 +18,7 @@
 #include "bEngine/Graphics/Color.h"
 #include "bEngine/Utils/Math.h"
 
+
 namespace bEngine::Core {
     struct {
         GLFWwindow *window{};

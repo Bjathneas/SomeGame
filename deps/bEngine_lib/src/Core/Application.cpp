@@ -8,6 +8,9 @@
 
 #include "bEngine/Core/Config.h"
 #include "bEngine/Core/Input.h"
+#include "bEngine/Graphics/Shader.h"
+#include "bEngine/Graphics/VAO.h"
+#include "bEngine/Graphics/VBO.h"
 #include "bEngine/Utils/Logger.h"
 
 
@@ -58,6 +61,7 @@ namespace bEngine::Core {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        
 
         glfwMakeContextCurrent(Application.window);
 
@@ -75,8 +79,30 @@ namespace bEngine::Core {
         glfwSwapInterval(0);
         DEBUG("Application is starting...")
 
-        glViewport(0, get_window_width(), 0, get_window_height());
+        glViewport(0, 0, get_window_width(), get_window_height());
         set_background_color(GFX::color_from_hex("#87CEEB"));
+
+        // TESTING CODE BEGIN
+
+        bEngine::GFX::VAO vao;
+        float vertices[] = {
+                -0.5f, -0.5f, 1.0f, 0.5f, 0.2f,
+                0.5f, -0.5f, 1.0f, 0.5f, 0.2f,
+                0.0f, 0.5f, 1.0f, 0.5f, 0.2f};
+        vao = bEngine::GFX::create_vertex_array(vertices, sizeof(vertices), 5);
+        GFX::define_vao_attribute(vao, 0, 0, 2);// vertex position
+        GFX::define_vao_attribute(vao, 1, 2, 3);// Color information
+
+
+        bEngine::GFX::Shader vertex_shader = bEngine::GFX::shader_from_file("/home/benajah/CLionProjects/Game/test.vert");
+        bEngine::GFX::Shader frag_shader = bEngine::GFX::shader_from_file("/home/benajah/CLionProjects/Game/test.frag");
+
+        bEngine::GFX::ShaderProgram shader_program = bEngine::GFX::create_shader_program(vertex_shader, frag_shader);
+
+        bEngine::GFX::delete_shader(vertex_shader);
+        bEngine::GFX::delete_shader(frag_shader);
+
+        //TESTING CODE END
 
         double accumulator = 0.0f;
         double last_time = glfwGetTime();
@@ -96,6 +122,15 @@ namespace bEngine::Core {
             Application.fps = 1.0f / delta_time;// NOLINT(*-narrowing-conversions)
 
             render();
+
+            //TESTING CODE BEGIN
+
+            GFX::use_shader_program(shader_program);
+            GFX::bind_vao(vao);
+            glDrawArrays(GL_TRIANGLES, 0, 3);
+
+            // TESTING CODE END
+
             glfwSwapBuffers(Application.window);
 
             update_input_data();
