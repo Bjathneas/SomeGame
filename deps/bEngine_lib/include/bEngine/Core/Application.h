@@ -20,10 +20,12 @@
 
 
 namespace bEngine::Core {
+    // TODO maybe split window properties into another struct i.e Application.Window
     struct {
         GLFWwindow *window{};
         float tps = 1.0f / 60.0f;
         float fps{0.0f}, fps_limit{0.0f};
+        bool vsync_state{false};
     } Application;
 
     void initializeApplication(const std::variant<std::filesystem::path, std::string_view> &config_file);

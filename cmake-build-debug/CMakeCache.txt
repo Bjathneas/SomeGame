@@ -333,6 +333,9 @@ glad_DIR:PATH=/home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/share/glad
 //The directory containing a CMake configuration file for glfw3.
 glfw3_DIR:PATH=/home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/share/glfw3
 
+//The directory containing a CMake configuration file for imgui.
+imgui_DIR:PATH=/home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/share/imgui
+
 //Path to a library.
 pkgcfg_lib_tomlplusplus_tomlplusplus:FILEPATH=/home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libtomlplusplus.a
 

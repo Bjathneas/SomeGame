@@ -3,8 +3,9 @@
 //
 #include "bEngine/Core/Application.h"
 
+#include <imgui.h>
+
 #include <cstdlib>
-#include <numeric>
 #include <thread>
 
 #include "bEngine/Core/Config.h"
@@ -13,16 +14,19 @@
 #include "bEngine/Graphics/VAO.h"
 #include "bEngine/Graphics/VBO.h"
 #include "bEngine/Utils/Logger.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 
 
 namespace bEngine::Core {
     void initializeApplication(const std::variant<std::filesystem::path, std::string_view> &config_file) {
+        // CONFIG
+
         try {
             load_config(std::get<std::filesystem::path>(config_file));
         } catch (const std::bad_variant_access &) {
             load_config(std::get<std::string_view>(config_file));
         }
-
 
         register_variable<int>("width", 240, "Application");
         register_variable<int>("height", 240, "Application");
@@ -30,11 +34,15 @@ namespace bEngine::Core {
         register_variable<int>("tps", 30, "Application");
         register_variable<int>("fps_limit", 60, "Application");
 
+        // GLFW
+
         if (!glfwInit()) {
             ERROR("GLFW failed to initialize. Terminating now...")
             exit(EXIT_FAILURE);
         }
 
+
+        // Application
         Application.window = glfwCreateWindow(get_int("width", "Application"), get_int("height", "Application"),
                                               get_string("title", "Application").c_str(), nullptr, nullptr);
 
@@ -47,8 +55,8 @@ namespace bEngine::Core {
         initialize_input_handler(Application.window);
         glfwSetFramebufferSizeCallback(Application.window, framebuffer_size_callback);
 
-        Application.tps = 1.0f / get_int("tps", "Application");            // NOLINT(*-narrowing-conversions)
-        Application.fps_limit = 1.0f / get_int("fps_limit", "Application");// NOLINT(*-narrowing-conversions)
+        Application.tps = 1.0f / get_int("tps", "Application");   // NOLINT(*-narrowing-conversions)
+        set_window_fps_limit(get_int("fps_limit", "Application"));// NOLINT(*-narrowing-conversions)
 
         DEBUG("Window was created successfully")
         std::string window_info = "\nWindow{\n";
@@ -67,18 +75,28 @@ namespace bEngine::Core {
 
         glfwMakeContextCurrent(Application.window);
 
+        // GLAD
+
         if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
             ERROR("Failed to initialize GLAD")
             glfwTerminate();
             exit(EXIT_FAILURE);
         }
 
+        // IMGUI
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
+        ImGuiIO &io = ImGui::GetIO();
+        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+        ImGui_ImplGlfw_InitForOpenGL(Application.window, true);
+        ImGui_ImplOpenGL3_Init();
+
         glfwHideWindow(Application.window);
     }
 
     void startApplication() {
         glfwShowWindow(Application.window);
-        glfwSwapInterval(0);
+        set_window_vsync(false);
         DEBUG("Application is starting...")
 
         glViewport(0, 0, get_window_width(), get_window_height());
@@ -130,7 +148,7 @@ namespace bEngine::Core {
             }
             Application.fps = 1.0f / delta_time;// NOLINT(*-narrowing-conversions)
 
-            render();
+            glClear(GL_COLOR_BUFFER_BIT);
 
             //TESTING CODE BEGIN
 
@@ -139,6 +157,9 @@ namespace bEngine::Core {
             glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
             // TESTING CODE END
+
+            render();
+
 
             glfwSwapBuffers(Application.window);
 
@@ -171,6 +192,7 @@ namespace bEngine::Core {
         return bEngine::Utils::Math::Dimension2{width, height};
     }
     void set_window_vsync(bool vsync) {
+        Application.vsync_state = vsync;
         glfwSwapInterval(vsync);
     }
 
@@ -180,12 +202,29 @@ namespace bEngine::Core {
 
     void update() {
         //use Application.tps for speeds
-        INFO(std::to_string(Application.fps).c_str());
     }
 
     void render() {
-        glClear(GL_COLOR_BUFFER_BIT);
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+        // TODO Implement Collapsing tabs for each category/struct
+        // Create Debugging Window
+#ifdef DEBUG_MODE
+        ImGui::Begin("Info Window", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+        ImGui::Text("FPS Rate/Limit: %s/%s\nVsync: %s\nTick Speed: %s",
+                    std::to_string((int) std::ceil(Application.fps)).c_str(),
+                    std::to_string((int) std::ceil(1.0f / Application.fps_limit)).c_str(),
+                    Application.vsync_state ? "True" : "False",
+                    std::to_string((int) std::ceil(1.0f / Application.tps)).c_str());
+        ImGui::End();
+#endif
+
+
         //render here
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
 
     void set_window_background_color(GFX::Color background_color) {

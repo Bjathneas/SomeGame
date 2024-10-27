@@ -4,6 +4,7 @@ project(bEngine_lib)
 find_package(OpenGL REQUIRED)
 find_package(glad REQUIRED)
 find_package(glfw3 REQUIRED)
+find_package(imgui REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(tomlplusplus REQUIRED IMPORTED_TARGET tomlplusplus)
 
@@ -25,6 +26,9 @@ add_library(bEngine_lib SHARED
         src/Graphics/VBO.cpp
         src/Graphics/VAO.cpp
         src/Graphics/EBO.cpp
+        src/Graphics/Camera.cpp
+        src/imgui_impl_glfw.cpp
+        src/imgui_impl_opengl3.cpp
 )
 
 target_include_directories(bEngine_lib PUBLIC include)
@@ -32,4 +36,5 @@ target_include_directories(bEngine_lib PUBLIC include)
 target_link_libraries(bEngine_lib glfw)
 target_link_libraries(bEngine_lib OpenGL::GL)
 target_link_libraries(bEngine_lib glad::glad)
+target_link_libraries(bEngine_lib imgui::imgui)
 target_link_libraries(bEngine_lib PkgConfig::tomlplusplus)
