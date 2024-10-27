@@ -23,7 +23,7 @@ namespace bEngine::Core {
     struct {
         GLFWwindow *window{};
         float tps = 1.0f / 60.0f;
-        float fps{0.0f};
+        float fps{0.0f}, fps_limit{0.0f};
     } Application;
 
     void initializeApplication(const std::variant<std::filesystem::path, std::string_view> &config_file);
@@ -34,7 +34,9 @@ namespace bEngine::Core {
 
     void render();
 
-    void set_background_color(GFX::Color background_color);
+    void set_window_background_color(GFX::Color background_color);
+    void set_window_vsync(bool vsync);
+    void set_window_fps_limit(int fps_limit);
 
     int get_window_width();
 

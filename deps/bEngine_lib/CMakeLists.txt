@@ -24,6 +24,7 @@ add_library(bEngine_lib SHARED
         src/Graphics/Shader.cpp
         src/Graphics/VBO.cpp
         src/Graphics/VAO.cpp
+        src/Graphics/EBO.cpp
 )
 
 target_include_directories(bEngine_lib PUBLIC include)

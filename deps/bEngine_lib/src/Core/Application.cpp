@@ -4,6 +4,7 @@
 #include "bEngine/Core/Application.h"
 
 #include <cstdlib>
+#include <numeric>
 #include <thread>
 
 #include "bEngine/Core/Config.h"
@@ -15,7 +16,6 @@
 
 
 namespace bEngine::Core {
-    // TODO May Abstract this function because DAMN
     void initializeApplication(const std::variant<std::filesystem::path, std::string_view> &config_file) {
         try {
             load_config(std::get<std::filesystem::path>(config_file));
@@ -28,6 +28,7 @@ namespace bEngine::Core {
         register_variable<int>("height", 240, "Application");
         register_variable<std::string>("title", "bEngine", "Application");
         register_variable<int>("tps", 30, "Application");
+        register_variable<int>("fps_limit", 60, "Application");
 
         if (!glfwInit()) {
             ERROR("GLFW failed to initialize. Terminating now...")
@@ -46,7 +47,8 @@ namespace bEngine::Core {
         initialize_input_handler(Application.window);
         glfwSetFramebufferSizeCallback(Application.window, framebuffer_size_callback);
 
-        Application.tps = 1.0f / get_int("tps", "Application");// NOLINT(*-narrowing-conversions)
+        Application.tps = 1.0f / get_int("tps", "Application");            // NOLINT(*-narrowing-conversions)
+        Application.fps_limit = 1.0f / get_int("fps_limit", "Application");// NOLINT(*-narrowing-conversions)
 
         DEBUG("Window was created successfully")
         std::string window_info = "\nWindow{\n";
@@ -61,7 +63,7 @@ namespace bEngine::Core {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-        
+
 
         glfwMakeContextCurrent(Application.window);
 
@@ -80,16 +82,23 @@ namespace bEngine::Core {
         DEBUG("Application is starting...")
 
         glViewport(0, 0, get_window_width(), get_window_height());
-        set_background_color(GFX::color_from_hex("#87CEEB"));
+        set_window_background_color(GFX::color_from_hex("#87CEEB"));
 
         // TESTING CODE BEGIN
 
         bEngine::GFX::VAO vao;
         float vertices[] = {
-                -0.5f, -0.5f, 1.0f, 0.5f, 0.2f,
-                0.5f, -0.5f, 1.0f, 0.5f, 0.2f,
-                0.0f, 0.5f, 1.0f, 0.5f, 0.2f};
-        vao = bEngine::GFX::create_vertex_array(vertices, sizeof(vertices), 5);
+                1.0f, 1.0f, 1.0f, 0.5f, 0.2f,  // top-right
+                1.0f, -1.0f, 1.0f, 0.5f, 0.2f, // bottom-right
+                -1.0f, -1.0f, 1.0f, 0.5f, 0.2f,// bottom-left
+                -1.0f, 1.0f, 1.0f, 0.5f, 0.2f, // top-left
+        };
+
+        unsigned int indices[] = {
+                0, 1, 3,
+                1, 2, 3};
+
+        vao = bEngine::GFX::create_vertex_array(GFX::create_vertex_buffer(vertices, sizeof(vertices)), GFX::create_element_buffer(indices, sizeof(indices)), 5);
         GFX::define_vao_attribute(vao, 0, 0, 2);// vertex position
         GFX::define_vao_attribute(vao, 1, 2, 3);// Color information
 
@@ -127,7 +136,7 @@ namespace bEngine::Core {
 
             GFX::use_shader_program(shader_program);
             GFX::bind_vao(vao);
-            glDrawArrays(GL_TRIANGLES, 0, 3);
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
             // TESTING CODE END
 
@@ -137,11 +146,11 @@ namespace bEngine::Core {
 
             glfwPollEvents();
 
-            /* TODO IMPLEMENT FPS LIMITING
-            double sleep_time = Application.target_fps - ( glfwGetTime() - current_time);
-            if(sleep_time > 0)
-                std::this_thread::sleep_for( std::chrono::duration<double>( sleep_time ) );
-            */
+            if (Application.fps_limit > 0.0f) {
+                double sleep_time = Application.fps_limit - (glfwGetTime() - current_time);
+                if (sleep_time > 0)
+                    std::this_thread::sleep_for(std::chrono::duration<double>(sleep_time));
+            }
         }
         DEBUG("Application was closed. Exiting loop...")
 
@@ -161,9 +170,17 @@ namespace bEngine::Core {
         glfwGetWindowSize(Application.window, &width, &height);
         return bEngine::Utils::Math::Dimension2{width, height};
     }
+    void set_window_vsync(bool vsync) {
+        glfwSwapInterval(vsync);
+    }
+
+    void set_window_fps_limit(int fps_limit) {
+        Application.fps_limit = 1.0f / fps_limit;// NOLINT(*-narrowing-conversions)
+    }
 
     void update() {
         //use Application.tps for speeds
+        INFO(std::to_string(Application.fps).c_str());
     }
 
     void render() {
@@ -171,7 +188,7 @@ namespace bEngine::Core {
         //render here
     }
 
-    void set_background_color(GFX::Color background_color) {
+    void set_window_background_color(GFX::Color background_color) {
         glClearColor(background_color.red, background_color.green, background_color.blue, background_color.alpha);
     }
 
