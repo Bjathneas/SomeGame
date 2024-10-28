@@ -40,6 +40,9 @@ namespace bEngine::Core {
             exit(EXIT_FAILURE);
         }
 
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
         // Application
         Application.window = glfwCreateWindow(get_int("width", "Application"), get_int("height", "Application"),
@@ -66,11 +69,6 @@ namespace bEngine::Core {
         window_info += "}";
 
         INFO(window_info.c_str())
-
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
 
         glfwMakeContextCurrent(Application.window);
 
@@ -169,7 +167,7 @@ namespace bEngine::Core {
             if (Application.fps_limit > 0.0f) {
                 double sleep_time = Application.fps_limit - (glfwGetTime() - current_time);
                 if (sleep_time > 0)
-                    std::this_thread::sleep_for(std::chrono::duration<double>(sleep_time));
+                    std::this_thread::sleep_for(std::chrono::duration<double>(sleep_time));// Catching some Z's
             }
         }
         DEBUG("Application was closed. Exiting loop...")
@@ -230,7 +228,7 @@ namespace bEngine::Core {
         glClearColor(background_color.red, background_color.green, background_color.blue, background_color.alpha);
     }
 
-    void framebuffer_size_callback([[maybe_unused]] GLFWwindow *window, int width, int height) {
+    void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
         glViewport(0, width, 0, height);
     }
 }// namespace bEngine::Core

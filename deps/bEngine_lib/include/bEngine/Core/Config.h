@@ -82,6 +82,7 @@ namespace bEngine::Core {
     /// \param variable The name of the variable being registered and loaded
     /// \param default_value The default value of the variable if not found in toml
     /// \param table The table that the variable is located under in toml
+    /// \see load_value_from_toml
     ///
     template<typename T>
     void register_variable(const std::string &variable, const std::variant<int, std::string> &default_value,

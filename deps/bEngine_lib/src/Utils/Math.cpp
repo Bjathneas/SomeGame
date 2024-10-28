@@ -15,6 +15,7 @@
 namespace bEngine::Utils::Math {
     bool srand_initialized{false};
     int randomValue(int min, int max) {
+        // Good Luck!!
         if (min > max) {
             min ^= max;
             max ^= min;
@@ -23,11 +24,11 @@ namespace bEngine::Utils::Math {
 
         if (!srand_initialized) {
             srand(time(nullptr));
-            srand_initialized = true;
+            srand_initialized = true;// Because we don’t want to seed it every damn time—who has that kind of time?
         }
 
 
-        return rand() % abs(max - min + 1) + min;
+        return rand() % abs(max - min + 1) + min;// Efficiency? Nah, we’re here for the chaos.
     }
 }// namespace bEngine::Utils::Math
 #pragma clang diagnostic pop

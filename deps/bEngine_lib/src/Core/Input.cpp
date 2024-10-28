@@ -6,12 +6,14 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 void bEngine::Core::initialize_input_handler(GLFWwindow *window) {
+    // Hooking up callbacks, because apparently, users want their shit to work.
     glfwSetKeyCallback(window, key_callback);
     glfwSetCursorPosCallback(window, cursor_position_callback);
     glfwSetMouseButtonCallback(window, mouse_button_callback);
 }
 
 void bEngine::Core::update_input_data() {
+    // Clean your room -Jordan Peterson
     InputData.changed_button_states.clear();
     InputData.changed_key_states.clear();
 }
