@@ -26,7 +26,7 @@ namespace bEngine::GFX {
     /// \param size Size of the array
     /// \return Element Buffer Object ID number
     ///
-    EBO create_element_buffer(const unsigned int* indices, long size);
+    EBO create_element_buffer( const unsigned int* indices, long size );
 
     ///
     /// \brief Creates Vertex Buffer Object
@@ -34,7 +34,7 @@ namespace bEngine::GFX {
     /// \param size Size of the array
     /// \return Vertex Buffer Object ID number
     ///
-    VBO create_vertex_buffer(const float* vertices, long size);
+    VBO create_vertex_buffer( const float* vertices, long size );
 
     ///
     /// \brief Creates Vertex Array Object
@@ -42,7 +42,7 @@ namespace bEngine::GFX {
     /// \param stride The size of each row of data
     /// \return Vertex Array Object structure {id, vbo, stride}
     ///
-    VAO create_vertex_array(VBO vbo, int stride);
+    VAO create_vertex_array( VBO vbo, int stride );
     ///
     /// \brief Creates Vertex Array Object
     /// \param vbo The Vertex Buffer Object ID number to bind to VAO
@@ -50,7 +50,7 @@ namespace bEngine::GFX {
     /// \param stride The size of each row of data
     /// \return Vertex Array Object structure {id, vbo, ebo, stride}
     ///
-    VAO create_vertex_array(VBO vbo, EBO ebo, int stride);
+    VAO create_vertex_array( VBO vbo, EBO ebo, int stride );
 
     ///
     /// \brief Define a column in vertex data
@@ -59,13 +59,13 @@ namespace bEngine::GFX {
     /// \param location Where in the vertex data to start reading from
     /// \param distance How far from the location does the vertex data extend
     ///
-    void define_vao_attribute(VAO vao, int attribute_number, int location, int distance);
+    void define_vao_attribute( VAO vao, int attribute_number, int location, int distance );
 
     ///
     /// \brief Bind Vertex Array Object
     /// \param vao The Vertex Array Object to bind
     ///
-    void bind_vao(VAO vao);
+    void bind_vao( VAO vao );
 }// namespace bEngine::GFX
 
 #endif//GAME_GFX_H

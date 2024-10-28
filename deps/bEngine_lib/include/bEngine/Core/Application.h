@@ -29,14 +29,14 @@ namespace bEngine::Core {
     struct {
         GLFWwindow *window{};
         float tps = 1.0f / 60.0f;
-        float fps{0.0f}, fps_limit{0.0f};
-        bool vsync_state{false};
+        float fps{ 0.0f }, fps_limit{ 0.0f };
+        bool vsync_state{ false };
     } Application;
     ///
     /// \brief Initializes variables and dependencies for Application to run
     /// \param config_file A filesystem path or string_view of config to load
     ///
-    void initializeApplication(const std::variant<std::filesystem::path, std::string_view> &config_file);
+    void initializeApplication( const std::variant<std::filesystem::path, std::string_view> &config_file );
 
     ///
     /// \brief Show window and begin mainloop
@@ -57,17 +57,17 @@ namespace bEngine::Core {
     /// \brief Sets the background color of Application.window for
     /// \param background_color The new background color
     ///
-    void set_window_background_color(GFX::Color background_color);
+    void set_window_background_color( GFX::Color background_color );
     ///
     /// \brief Sets the vsync state of Application.window
     /// \param vsync The new vsync state
     ///
-    void set_window_vsync(bool vsync);
+    void set_window_vsync( bool vsync );
     ///
     /// \brief Sets the frame rate limit of the Application
     /// \param fps_limit The new Frame Rate limit; fps_limit <= 0 disables frame rate limit
     ///
-    void set_fps_limit(int fps_limit);
+    void set_fps_limit( int fps_limit );
 
     ///
     /// \brief Gets width of Application.window
@@ -93,7 +93,7 @@ namespace bEngine::Core {
     /// \param width The new width of Application.window
     /// \param height The new height of Application.window
     ///
-    static void framebuffer_size_callback(GLFWwindow *window, int width, int height);
+    static void framebuffer_size_callback( GLFWwindow *window, int width, int height );
 }// namespace bEngine::Core
 
 #endif//GAME_APPLICATION_H

@@ -26,14 +26,14 @@ namespace bEngine::GFX {
     /// \param alpha The opacity value 0-255 -> defaults to 255 if not defined
     /// \return The Color according to its RGBA values
     ///
-    Color color_from_rgb(int red, int green, int blue, int alpha = 255);
+    Color color_from_rgb( int red, int green, int blue, int alpha = 255 );
 
     ///
     /// \brief Create a Color from a HexCode
     /// \param hex_code The HexCode representation of the color
     /// \return The Color according to its hex value
     ///
-    Color color_from_hex(std::string hex_code);
+    Color color_from_hex( std::string hex_code );
 }// namespace bEngine::GFX
 
 #endif//GAME_COLOR_H

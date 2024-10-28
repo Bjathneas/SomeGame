@@ -17,7 +17,7 @@ namespace bEngine::GFX {
     ///
     struct {
         glm::mat4 camera_projection{};
-        Utils::Math::AABB camera_info{{0.0, 0.0}, {0, 0}};
+        Utils::Math::AABB camera_info{ { 0.0, 0.0 }, { 0, 0 } };
     } Camera;
 
     ///
@@ -25,20 +25,20 @@ namespace bEngine::GFX {
     /// \param x The new camera x position
     /// \param y The new camera y position
     ///
-    void set_camera_position(double x, double y);
+    void set_camera_position( double x, double y );
     ///
     /// \brief Set the dimensions of the camera
     /// \param width The new width of the Camera's view
     /// \param height The new height of the Camera's view
     ///
-    void set_camera_size(int width, int height);
+    void set_camera_size( int width, int height );
 
     ///
     /// \brief Move the cameras position by a distance
     /// \param distance_x The distance to move the Camera's x position
     /// \param distance_y The distance to move the Camera's y position
     ///
-    void move_camera(double distance_x, double distance_y);
+    void move_camera( double distance_x, double distance_y );
 
     ///
     /// \brief Calculate the new projection of the camera

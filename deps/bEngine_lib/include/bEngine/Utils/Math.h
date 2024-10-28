@@ -44,7 +44,7 @@ namespace bEngine::Utils::Math {
     /// \param max The maximum int in the rance
     /// \return A random value within the range min-max
     ///
-    int randomValue(int min, int max);
+    int randomValue( int min, int max );
 }// namespace bEngine::Utils::Math
 
 #endif//GAME_MATH_H

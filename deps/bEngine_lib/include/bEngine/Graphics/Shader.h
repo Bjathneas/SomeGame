@@ -31,20 +31,20 @@ namespace bEngine::GFX {
     /// \param shader_file_path The path to the shader file {.vert, .frag}
     /// \return The Shader structure {type, identifier}
     ///
-    Shader shader_from_file(const std::filesystem::path &shader_file_path);
+    Shader shader_from_file( const std::filesystem::path &shader_file_path );
     ///
     /// \brief Load and compile shader from a string
     /// \param string The shader source code
     /// \param type The type of shader being created
     /// \return The Shader structure {type, identifier}
     ///
-    Shader shader_from_string(const char *string, Shader::TYPE type);
+    Shader shader_from_string( const char *string, Shader::TYPE type );
 
     ///
     /// \brief Delete a shader from memory
     /// \param shader The Shader to delete
     ///
-    void delete_shader(Shader shader);
+    void delete_shader( Shader shader );
 
     ///
     /// \brief Create and Compile a Shader Program from a vertex and fragment shader
@@ -52,13 +52,13 @@ namespace bEngine::GFX {
     /// \param shader_2 Vertex or Fragment shader
     /// \return The Shader Program
     ///
-    ShaderProgram create_shader_program(Shader &shader_1, Shader &shader_2);
+    ShaderProgram create_shader_program( Shader &shader_1, Shader &shader_2 );
 
     ///
     /// \brief Bind/Use Shader Program to use for rendering
     /// \param shader_program The Shader Program to Bind/Use
     ///
-    void use_shader_program(ShaderProgram shader_program);
+    void use_shader_program( ShaderProgram shader_program );
 }// namespace bEngine::GFX
 
 #endif//GAME_SHADER_H

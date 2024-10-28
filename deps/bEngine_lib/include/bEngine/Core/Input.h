@@ -11,7 +11,7 @@
 #define GAME_INPUT_H
 
 // INPUT VARIABLES
-#define KEY_UNKNOWN (-1)
+#define KEY_UNKNOWN ( -1 )
 #define KEY_SPACE 32
 #define KEY_APOSTROPHE 39
 #define KEY_COMMA 44
@@ -167,7 +167,7 @@ namespace bEngine::Core {
     /// \brief Initialize Input handling pipeline
     /// \param window Application.window
     ///
-    void initialize_input_handler(GLFWwindow* window);
+    void initialize_input_handler( GLFWwindow* window );
 
     ///
     /// \brief Clear all input states before polling
@@ -179,42 +179,42 @@ namespace bEngine::Core {
     /// \param key The value of the key
     /// \return Whether or not the key's state is pressed
     ///
-    bool is_key_pressed(int key);
+    bool is_key_pressed( int key );
 
     ///
     /// \brief Check if key was just pressed within the last frame
     /// \param key The value of the key
     /// \return Whether or not the key was just pressed within the last frame
     ///
-    bool was_key_pressed(int key);
+    bool was_key_pressed( int key );
 
     ///
     /// \brief Check if key was just released within the last frame
     /// \param key The value of the key
     /// \return Whether or not the key was just released within the last frame
     ///
-    bool was_key_released(int key);
+    bool was_key_released( int key );
 
     ///
     /// \brief Check if mouse button is currently in the pressed state
     /// \param button The value of the mouse button
     /// \return Whether or not the mouse button's state is pressed
     ///
-    bool is_mouse_pressed(int button);
+    bool is_mouse_pressed( int button );
 
     ///
     /// \brief Check if mouse button was just pressed within the last frame
     /// \param button The value of the mouse button
     /// \return Whether or not the mouse button was just pressed within the last frame
     ///
-    bool was_mouse_pressed(int button);
+    bool was_mouse_pressed( int button );
 
     ///
     /// \brief Check if mouse button was just released within the last frame
     /// \param button The value of the mouse button
     /// \return Whether or not the mouse button was just released within the last frame
     ///
-    bool was_mouse_released(int button);
+    bool was_mouse_released( int button );
 
     ///
     /// \brief Get mouse's current x position
@@ -242,7 +242,7 @@ namespace bEngine::Core {
     /// \param action The new key state
     /// \param mods UNUSED
     ///
-    static void key_callback(GLFWwindow* window, int key, [[maybe_unused]] int scancode, int action, [[maybe_unused]] int mods);
+    static void key_callback( GLFWwindow* window, int key, [[maybe_unused]] int scancode, int action, [[maybe_unused]] int mods );
 
     ///
     /// \brief Update mouse position data when, well when, the mouse moves
@@ -251,7 +251,7 @@ namespace bEngine::Core {
     /// \param y_position The new mouse y position
     ///
     // TODO maybe remove this system and just dynamically access the mouse postion
-    static void cursor_position_callback([[maybe_unused]] GLFWwindow* window, double x_position, double y_position);
+    static void cursor_position_callback( [[maybe_unused]] GLFWwindow* window, double x_position, double y_position );
 
     ///
     /// \brief Update mouse button states when they change
@@ -260,7 +260,7 @@ namespace bEngine::Core {
     /// \param action The new mouse button state
     /// \param mods UNUSED
     ///
-    static void mouse_button_callback([[maybe_unused]] GLFWwindow* window, int button, int action, [[maybe_unused]] int mods);
+    static void mouse_button_callback( [[maybe_unused]] GLFWwindow* window, int button, int action, [[maybe_unused]] int mods );
 }// namespace bEngine::Core
 
 #endif//GAME_INPUT_H

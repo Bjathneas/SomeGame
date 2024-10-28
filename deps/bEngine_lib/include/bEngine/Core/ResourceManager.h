@@ -26,8 +26,8 @@ namespace bEngine::Core {
     /// \param value The value of the resource
     ///
     template<typename T>
-    [[maybe_unused]] void set(const std::string& key, const T& value) {
-        resources[key] = value;
+    [[maybe_unused]] void set( const std::string& key, const T& value ) {
+        resources[ key ] = value;
     }
 
     ///
@@ -37,24 +37,24 @@ namespace bEngine::Core {
     /// \return The value of the resource
     ///
     template<typename T>
-    [[maybe_unused]] T get(const std::string& key) {
-        auto iterator = resources.find(key);
-        if (iterator != resources.end()) {
+    [[maybe_unused]] T get( const std::string& key ) {
+        auto iterator = resources.find( key );
+        if ( iterator != resources.end() ) {
             try {
-                return std::any_cast<T>(iterator->second);
-            } catch (const std::bad_any_cast&) {
-                throw std::runtime_error("Bad Resource Type Cast");
+                return std::any_cast<T>( iterator->second );
+            } catch ( const std::bad_any_cast& ) {
+                throw std::runtime_error( "Bad Resource Type Cast" );
             }
         }
 
-        throw std::runtime_error("Resource does not exist");
+        throw std::runtime_error( "Resource does not exist" );
     }
 
     ///
     /// \brief Remove a resource from the manager
     /// \param key The name of the resource
     ///
-    [[maybe_unused]] inline void remove(const std::string& key) { resources.erase(key); }
+    [[maybe_unused]] inline void remove( const std::string& key ) { resources.erase( key ); }
 }// namespace bEngine::Core
 
 #endif//GAME_RESOURCEMANAGER_H
