@@ -1,14 +1,16 @@
-//
-// Created by benajah on 10/25/24.
-//
-
+///
+/// \file Input.h
+/// \brief Definitions of all Input variables and handling
+/// \author Benajah Baskin
+/// \date 10/25/24
+///
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "OCUnusedMacroInspection"
 #ifndef GAME_INPUT_H
 #define GAME_INPUT_H
 
-// INPUT VALUES
+// INPUT VARIABLES
 #define KEY_UNKNOWN (-1)
 #define KEY_SPACE 32
 #define KEY_APOSTROPHE 39
@@ -151,6 +153,9 @@
 #include "bEngine/Utils/Math.h"
 
 namespace bEngine::Core {
+    ///
+    /// \brief Structure of all input states and mouse location
+    ///
     struct {
         std::unordered_map<int, int> changed_key_states;
         std::unordered_map<int, int> changed_button_states;
@@ -158,32 +163,103 @@ namespace bEngine::Core {
         double mouse_x{}, mouse_y{};
     } InputData;
 
+    ///
+    /// \brief Initialize Input handling pipeline
+    /// \param window Application.window
+    ///
     void initialize_input_handler(GLFWwindow* window);
 
+    ///
+    /// \brief Clear all input states before polling
+    ///
     void update_input_data();
 
+    ///
+    /// \brief Check if key is currently in the pressed state
+    /// \param key The value of the key
+    /// \return Whether or not the key's state is pressed
+    ///
     bool is_key_pressed(int key);
 
+    ///
+    /// \brief Check if key was just pressed within the last frame
+    /// \param key The value of the key
+    /// \return Whether or not the key was just pressed within the last frame
+    ///
     bool was_key_pressed(int key);
 
+    ///
+    /// \brief Check if key was just released within the last frame
+    /// \param key The value of the key
+    /// \return Whether or not the key was just released within the last frame
+    ///
     bool was_key_released(int key);
 
+    ///
+    /// \brief Check if mouse button is currently in the pressed state
+    /// \param button The value of the mouse button
+    /// \return Whether or not the mouse button's state is pressed
+    ///
     bool is_mouse_pressed(int button);
 
+    ///
+    /// \brief Check if mouse button was just pressed within the last frame
+    /// \param button The value of the mouse button
+    /// \return Whether or not the mouse button was just pressed within the last frame
+    ///
     bool was_mouse_pressed(int button);
 
+    ///
+    /// \brief Check if mouse button was just released within the last frame
+    /// \param button The value of the mouse button
+    /// \return Whether or not the mouse button was just released within the last frame
+    ///
     bool was_mouse_released(int button);
 
+    ///
+    /// \brief Get mouse's current x position
+    /// \return Mouse's current x position
+    ///
     double get_mouse_x();
 
+    ///
+    /// \brief Get mouse's current y position
+    /// \return Mouse's current y position
+    ///
     double get_mouse_y();
 
+    ///
+    /// \brief Get mouse's current position
+    /// \return Mouse's current position as a Vector2{x,y}
+    ///
     bEngine::Utils::Math::Vector2 get_mouse_position();
 
-    static void key_callback([[maybe_unused]] GLFWwindow* window, int key, [[maybe_unused]] int scancode, int action, [[maybe_unused]] int mods);
+    ///
+    /// \brief Update key states when they change
+    /// \param window Application.window
+    /// \param key The value of the key
+    /// \param scancode UNUSED
+    /// \param action The new key state
+    /// \param mods UNUSED
+    ///
+    static void key_callback(GLFWwindow* window, int key, [[maybe_unused]] int scancode, int action, [[maybe_unused]] int mods);
 
+    ///
+    /// \brief Update mouse position data when, well when, the mouse moves
+    /// \param window Application.window
+    /// \param x_position The new mouse x position
+    /// \param y_position The new mouse y position
+    ///
+    // TODO maybe remove this system and just dynamically access the mouse postion
     static void cursor_position_callback([[maybe_unused]] GLFWwindow* window, double x_position, double y_position);
 
+    ///
+    /// \brief Update mouse button states when they change
+    /// \param window Application.window
+    /// \param button The value of the mouse button
+    /// \param action The new mouse button state
+    /// \param mods UNUSED
+    ///
     static void mouse_button_callback([[maybe_unused]] GLFWwindow* window, int button, int action, [[maybe_unused]] int mods);
 }// namespace bEngine::Core
 

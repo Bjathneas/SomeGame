@@ -1,7 +1,5 @@
 #include "Config.h"
 #include "bEngine/Core/Application.h"
-#include "bEngine/Graphics/Shader.h"
-#include "bEngine/Graphics/VBO.h"
 #include "bEngine/Utils/Logger.h"
 
 int main() {

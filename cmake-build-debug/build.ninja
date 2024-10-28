@@ -168,30 +168,6 @@ build deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Shader.cpp.o: CXX
   OBJECT_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir
   OBJECT_FILE_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics
 
-build deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/VBO.cpp.o: CXX_COMPILER__bEngine_lib_unscanned_Debug /home/benajah/CLionProjects/Game/deps/bEngine_lib/src/Graphics/VBO.cpp || cmake_object_order_depends_target_bEngine_lib
-  DEFINES = -DDEBUG_MODE -DbEngine_lib_EXPORTS
-  DEP_FILE = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/VBO.cpp.o.d
-  FLAGS = -g -fPIC -fdiagnostics-color=always -DTOML_HEADER_ONLY=0
-  INCLUDES = -I/home/benajah/CLionProjects/Game/deps/bEngine_lib/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include
-  OBJECT_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir
-  OBJECT_FILE_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics
-
-build deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/VAO.cpp.o: CXX_COMPILER__bEngine_lib_unscanned_Debug /home/benajah/CLionProjects/Game/deps/bEngine_lib/src/Graphics/VAO.cpp || cmake_object_order_depends_target_bEngine_lib
-  DEFINES = -DDEBUG_MODE -DbEngine_lib_EXPORTS
-  DEP_FILE = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/VAO.cpp.o.d
-  FLAGS = -g -fPIC -fdiagnostics-color=always -DTOML_HEADER_ONLY=0
-  INCLUDES = -I/home/benajah/CLionProjects/Game/deps/bEngine_lib/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include
-  OBJECT_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir
-  OBJECT_FILE_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics
-
-build deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/EBO.cpp.o: CXX_COMPILER__bEngine_lib_unscanned_Debug /home/benajah/CLionProjects/Game/deps/bEngine_lib/src/Graphics/EBO.cpp || cmake_object_order_depends_target_bEngine_lib
-  DEFINES = -DDEBUG_MODE -DbEngine_lib_EXPORTS
-  DEP_FILE = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/EBO.cpp.o.d
-  FLAGS = -g -fPIC -fdiagnostics-color=always -DTOML_HEADER_ONLY=0
-  INCLUDES = -I/home/benajah/CLionProjects/Game/deps/bEngine_lib/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include
-  OBJECT_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir
-  OBJECT_FILE_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics
-
 build deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Camera.cpp.o: CXX_COMPILER__bEngine_lib_unscanned_Debug /home/benajah/CLionProjects/Game/deps/bEngine_lib/src/Graphics/Camera.cpp || cmake_object_order_depends_target_bEngine_lib
   DEFINES = -DDEBUG_MODE -DbEngine_lib_EXPORTS
   DEP_FILE = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Camera.cpp.o.d
@@ -216,6 +192,14 @@ build deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/imgui_impl_opengl3.cpp.o: 
   OBJECT_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir
   OBJECT_FILE_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src
 
+build deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/GFX.cpp.o: CXX_COMPILER__bEngine_lib_unscanned_Debug /home/benajah/CLionProjects/Game/deps/bEngine_lib/src/Graphics/GFX.cpp || cmake_object_order_depends_target_bEngine_lib
+  DEFINES = -DDEBUG_MODE -DbEngine_lib_EXPORTS
+  DEP_FILE = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/GFX.cpp.o.d
+  FLAGS = -g -fPIC -fdiagnostics-color=always -DTOML_HEADER_ONLY=0
+  INCLUDES = -I/home/benajah/CLionProjects/Game/deps/bEngine_lib/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/include -isystem /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/pkgconfig/../../../include
+  OBJECT_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir
+  OBJECT_FILE_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics
+
 
 # =============================================================================
 # Link build statements for SHARED_LIBRARY target bEngine_lib
@@ -224,7 +208,7 @@ build deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/imgui_impl_opengl3.cpp.o: 
 #############################################
 # Link the shared library deps/bEngine_lib/libbEngine_lib.so
 
-build deps/bEngine_lib/libbEngine_lib.so: CXX_SHARED_LIBRARY_LINKER__bEngine_lib_Debug deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Application.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Utils/Logger.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Config.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Input.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Utils/Math.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Color.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Shader.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/VBO.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/VAO.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/EBO.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Camera.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/imgui_impl_glfw.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/imgui_impl_opengl3.cpp.o | /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglfw3.a /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglad.a /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libimguid.a /usr/lib/librt.a /usr/lib/libm.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libtomlplusplus.a
+build deps/bEngine_lib/libbEngine_lib.so: CXX_SHARED_LIBRARY_LINKER__bEngine_lib_Debug deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Application.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Utils/Logger.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Config.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Core/Input.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Utils/Math.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Color.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Shader.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/Camera.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/imgui_impl_glfw.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/imgui_impl_opengl3.cpp.o deps/bEngine_lib/CMakeFiles/bEngine_lib.dir/src/Graphics/GFX.cpp.o | /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglfw3.a /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglad.a /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libimguid.a /usr/lib/librt.a /usr/lib/libm.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libtomlplusplus.a
   LANGUAGE_COMPILE_FLAGS = -g
   LINK_LIBRARIES = /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglfw3.a  /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libglad.a  /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libimguid.a  /usr/lib/librt.a  -lm  -ldl  /usr/lib/libGLX.so  /usr/lib/libOpenGL.so  /home/benajah/.vcpkg-clion/vcpkg/installed/x64-linux/debug/lib/libtomlplusplus.a
   OBJECT_DIR = deps/bEngine_lib/CMakeFiles/bEngine_lib.dir

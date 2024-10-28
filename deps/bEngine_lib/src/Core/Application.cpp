@@ -10,9 +10,8 @@
 
 #include "bEngine/Core/Config.h"
 #include "bEngine/Core/Input.h"
+#include "bEngine/Graphics/GFX.h"
 #include "bEngine/Graphics/Shader.h"
-#include "bEngine/Graphics/VAO.h"
-#include "bEngine/Graphics/VBO.h"
 #include "bEngine/Utils/Logger.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -55,8 +54,8 @@ namespace bEngine::Core {
         initialize_input_handler(Application.window);
         glfwSetFramebufferSizeCallback(Application.window, framebuffer_size_callback);
 
-        Application.tps = 1.0f / get_int("tps", "Application");   // NOLINT(*-narrowing-conversions)
-        set_window_fps_limit(get_int("fps_limit", "Application"));// NOLINT(*-narrowing-conversions)
+        Application.tps = 1.0f / get_int("tps", "Application");// NOLINT(*-narrowing-conversions)
+        set_fps_limit(get_int("fps_limit", "Application"));    // NOLINT(*-narrowing-conversions)
 
         DEBUG("Window was created successfully")
         std::string window_info = "\nWindow{\n";
@@ -196,7 +195,7 @@ namespace bEngine::Core {
         glfwSwapInterval(vsync);
     }
 
-    void set_window_fps_limit(int fps_limit) {
+    void set_fps_limit(int fps_limit) {
         Application.fps_limit = 1.0f / fps_limit;// NOLINT(*-narrowing-conversions)
     }
 

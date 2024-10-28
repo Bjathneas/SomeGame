@@ -67,17 +67,17 @@ namespace bEngine::GFX {
     }
     ShaderProgram create_shader_program(Shader &shader_1, Shader &shader_2) {
         ShaderProgram shader_program{};
-        shader_program.identifier = glCreateProgram();
-        glAttachShader(shader_program.identifier, shader_1.identifier);
-        glAttachShader(shader_program.identifier, shader_2.identifier);
-        glLinkProgram(shader_program.identifier);
+        shader_program = glCreateProgram();
+        glAttachShader(shader_program, shader_1.identifier);
+        glAttachShader(shader_program, shader_2.identifier);
+        glLinkProgram(shader_program);
 
         int program_compiled;
-        glGetProgramiv(shader_program.identifier, GL_COMPILE_STATUS, &program_compiled);
+        glGetProgramiv(shader_program, GL_COMPILE_STATUS, &program_compiled);
 
         if (!program_compiled) {
             char what_went_wrong[512];
-            glGetProgramInfoLog(shader_program.identifier, 512, nullptr, what_went_wrong);
+            glGetProgramInfoLog(shader_program, 512, nullptr, what_went_wrong);
 
             std::string oof = "Shader Program Failed to Compile, with the Error {";
             oof += what_went_wrong;
@@ -94,6 +94,6 @@ namespace bEngine::GFX {
     }
 
     void use_shader_program(ShaderProgram shader_program) {
-        glUseProgram(shader_program.identifier);
+        glUseProgram(shader_program);
     }
 }// namespace bEngine::GFX

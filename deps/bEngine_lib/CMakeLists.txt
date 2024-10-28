@@ -23,12 +23,10 @@ add_library(bEngine_lib SHARED
         src/Utils/Math.cpp
         src/Graphics/Color.cpp
         src/Graphics/Shader.cpp
-        src/Graphics/VBO.cpp
-        src/Graphics/VAO.cpp
-        src/Graphics/EBO.cpp
         src/Graphics/Camera.cpp
         src/imgui_impl_glfw.cpp
         src/imgui_impl_opengl3.cpp
+        src/Graphics/GFX.cpp
 )
 
 target_include_directories(bEngine_lib PUBLIC include)
