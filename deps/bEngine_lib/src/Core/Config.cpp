@@ -4,8 +4,6 @@
 
 #include "bEngine/Core/Config.h"
 
-#include <cassert>
-
 namespace bEngine::Core {
 
     std::unordered_map<std::string, std::unordered_map<std::string, int>> type_map;
@@ -31,16 +29,20 @@ namespace bEngine::Core {
     }
 
     int get_int( const std::string& variable, const std::string& table ) {
-        // TODO HANDLE error for unregistered variables and request for wrong types
         // Making sure you didn't ask for an int but actually wanted a string.
-        // If you did, well... too bad. Error-handling is for the weak.
-        assert( type_map[ table ][ variable ] == type_reference[ "int" ] );
+        if ( type_map[ table ][ variable ] != type_reference[ "int" ] ) {
+            ERROR( std::string( "Bad type request for " + table + "[" + variable + "] from config. NOT an INT or does not exist!" ).c_str() );
+            exit( EXIT_FAILURE );
+        }
         return std::get<int>( values[ table ][ variable ] );
     }
 
     std::string get_string( const std::string& variable, const std::string& table ) {
-        // If this assert fails, congrats. You messed up and tried to grab a string out of a rock.
-        assert( type_map[ table ][ variable ] == type_reference[ "string" ] );
+        // If this fails, congrats. You messed up and tried to grab a string out of a rock.
+        if ( type_map[ table ][ variable ] != type_reference[ "string" ] ) {
+            ERROR( std::string( "Bad type request for " + table + "[" + variable + "] from config. NOT a STD::STRING or does not exist!" ).c_str() );
+            exit( EXIT_FAILURE );
+        }
         return std::get<std::string>( values[ table ][ variable ] );
     }
 }// namespace bEngine::Core

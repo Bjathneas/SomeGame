@@ -3,7 +3,6 @@
 //
 #include "bEngine/Graphics/Shader.h"
 
-#include <cassert>
 #include <fstream>
 
 #include "bEngine/Utils/Logger.h"
@@ -21,12 +20,16 @@ namespace bEngine::GFX {
         //check file extension
         std::string file_extension = shader_file_path.extension();
 
-        if ( file_extension == ".vert" )
+        if ( std::string( ".vert .vs .vsh .vshader" ).find( file_extension ) != std::string::npos )
             return shader_from_string( content.c_str(), Shader::TYPE::VERTEX );
-        else if ( file_extension == ".frag" )
+        else if ( std::string( ".frag .fs .fsh .fshader" ).find( file_extension ) != std::string::npos )
             return shader_from_string( content.c_str(), Shader::TYPE::FRAGMENT );
-        else
-            assert( true == false );// TODO remove this god awful solution
+        else {
+            std::string error_message = "Shader File " + shader_file_path.string() + " has an unsupported file extension of " + file_extension +
+                                        ". Supported file extensions are [ .vert, .vs, .vsh, .vshader, .frag, .fs, .fsh .fshader ]";
+            ERROR( error_message.c_str() );
+        }
+        exit( EXIT_FAILURE );
     }
 
     Shader shader_from_string( const char *string, Shader::TYPE type ) {
@@ -41,7 +44,7 @@ namespace bEngine::GFX {
                 shader.identifier = glCreateShader( GL_FRAGMENT_SHADER );
                 shader.type = Shader::TYPE::FRAGMENT;
                 break;
-            case Shader_::GEOMETRY:
+            case Shader::GEOMETRY:
                 break;
         }
 

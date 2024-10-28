@@ -15,21 +15,21 @@ namespace bEngine::Utils::Math {
     ///
     /// \brief A 2d Vector {x,y}
     ///
-    typedef struct Vector2_ {
+    typedef struct {
         double x, y;
     } Vector2;
 
     ///
     /// \brief A 2d Dimension {width, height}
     ///
-    typedef struct Dimension2_ {
+    typedef struct {
         int width, height;
     } Dimension2;
 
     ///
     /// \brief An Aligned Axis Bounding Box {position, size}
     ///
-    typedef struct AABB_ {
+    typedef struct {
         Vector2 position;
         Dimension2 size;
     } AABB;

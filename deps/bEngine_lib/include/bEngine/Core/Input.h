@@ -250,7 +250,7 @@ namespace bEngine::Core {
     /// \param x_position The new mouse x position
     /// \param y_position The new mouse y position
     ///
-    // TODO maybe remove this system and just dynamically access the mouse postion
+    // FIXME maybe remove this system and just dynamically access the mouse position
     static void cursor_position_callback( [[maybe_unused]] GLFWwindow* window, double x_position, double y_position );
 
     ///

@@ -5,8 +5,6 @@
 //
 #include "bEngine/Graphics/Color.h"
 
-#include <cassert>
-
 #include "bEngine/Utils/Logger.h"
 
 #pragma clang diagnostic push
@@ -33,8 +31,11 @@ namespace bEngine::GFX {
         if ( hex_code[ 0 ] == '#' )
             hex_code.erase( hex_code.begin(), hex_code.begin() + 1 );
 
-        // Asserting that the hex code is not some random shit. We're not that lenient.
-        assert( !( hex_code.length() > 8 ) && ( hex_code.length() % 2 ) == 0 && hex_code.length() >= 6 );
+        // Check that it's 6-8 characters of valid hex; if not, congratulations, you get white.
+        if ( hex_code.length() <= 8 && ( hex_code.length() % 2 ) == 0 && hex_code.length() >= 6 ) {
+            WARN( std::string( "Invalid Hex: " + hex_code + " -> Defaulting to FFFFFF" ).c_str() )// Letting you know why its snow-white
+            hex_code = "FFFFFF";
+        }
 
         unsigned red, green, blue, alpha;
 

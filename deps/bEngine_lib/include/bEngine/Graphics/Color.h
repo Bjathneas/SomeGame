@@ -14,7 +14,7 @@ namespace bEngine::GFX {
     ///
     /// \brief OpenGL values for a color
     ///
-    typedef struct Color_ {
+    typedef struct {
         float red, green, blue, alpha;
     } Color;
 

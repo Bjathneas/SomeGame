@@ -101,18 +101,20 @@ namespace bEngine::Core {
 
         // TESTING CODE BEGIN
 
+        bEngine::GFX::Color rect_color = GFX::color_from_hex( "#801d36" );
+
         bEngine::GFX::VAO vao;
         float vertices[] = {
-                1.0f, 1.0f, 1.0f, 0.5f, 0.2f,  // top-right
-                1.0f, -1.0f, 1.0f, 0.5f, 0.2f, // bottom-right
-                -1.0f, -1.0f, 1.0f, 0.5f, 0.2f,// bottom-left
-                -1.0f, 1.0f, 1.0f, 0.5f, 0.2f, // top-left
+                1.0f, 1.0f, rect_color.red, rect_color.green, rect_color.blue,  // top-right
+                1.0f, -1.0f, rect_color.red, rect_color.green, rect_color.blue, // bottom-right
+                -1.0f, -1.0f, rect_color.red, rect_color.green, rect_color.blue,// bottom-left
+                -1.0f, 1.0f, rect_color.red, rect_color.green, rect_color.blue, // top-left
         };
 
         unsigned int indices[] = {
                 0, 1, 3,
                 1, 2, 3 };
-
+        
         vao = bEngine::GFX::create_vertex_array( GFX::create_vertex_buffer( vertices, sizeof( vertices ) ), GFX::create_element_buffer( indices, sizeof( indices ) ), 5 );
         GFX::define_vao_attribute( vao, 0, 0, 2 );// vertex position
         GFX::define_vao_attribute( vao, 1, 2, 3 );// Color information

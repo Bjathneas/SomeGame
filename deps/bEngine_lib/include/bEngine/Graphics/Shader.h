@@ -16,7 +16,7 @@ namespace bEngine::GFX {
     ///
     /// \brief Shader data structure
     ///
-    typedef struct Shader_ {
+    typedef struct {
         enum TYPE { VERTEX,
                     FRAGMENT,
                     GEOMETRY };

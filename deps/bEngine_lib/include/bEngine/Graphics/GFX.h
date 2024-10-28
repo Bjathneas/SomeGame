@@ -13,7 +13,7 @@
 namespace bEngine::GFX {
     typedef GLuint VBO;
     typedef GLuint EBO;
-    typedef struct VAO_ {
+    typedef struct {
         GLuint identifier;
         VBO vbo;
         EBO ebo;
