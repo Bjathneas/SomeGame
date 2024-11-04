@@ -1,14 +1,13 @@
 #include "Config.h"
-#include "bEngine/Core/Application.h"
-#include "bEngine/Utils/Logger.h"
+#include "bEngine/bEngine.h"
 
 int main() {
 
-    bEngine::Core::initializeApplication(config_file);
+    bEngine::Core::initializeApplication( config_file );
 
     bEngine::Core::startApplication();
 
-    DEBUG("Application ran until it was closed")
+    DEBUG( "Application ran until it was closed" )
 
     return 0;
 }

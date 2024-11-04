@@ -11,6 +11,11 @@
 
 #include "bEngine/Utils/Math.h"
 
+/*
+ * Formula for converting all of this shit to the screen
+ * projection * model * aPos
+ */
+
 namespace bEngine::GFX {
     ///
     /// \brief Structure of the Camera's data

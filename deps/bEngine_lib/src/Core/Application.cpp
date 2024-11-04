@@ -103,19 +103,18 @@ namespace bEngine::Core {
 
         bEngine::GFX::Color rect_color = GFX::color_from_hex( "#801d36" );
 
-        bEngine::GFX::VAO vao;
-        float vertices[] = {
+        const float vertices[] = {
                 1.0f, 1.0f, rect_color.red, rect_color.green, rect_color.blue,  // top-right
                 1.0f, -1.0f, rect_color.red, rect_color.green, rect_color.blue, // bottom-right
                 -1.0f, -1.0f, rect_color.red, rect_color.green, rect_color.blue,// bottom-left
                 -1.0f, 1.0f, rect_color.red, rect_color.green, rect_color.blue, // top-left
         };
 
-        unsigned int indices[] = {
+        const unsigned int indices[] = {
                 0, 1, 3,
                 1, 2, 3 };
-        
-        vao = bEngine::GFX::create_vertex_array( GFX::create_vertex_buffer( vertices, sizeof( vertices ) ), GFX::create_element_buffer( indices, sizeof( indices ) ), 5 );
+
+        GFX::VAO vao = bEngine::GFX::create_vertex_array( GFX::create_vertex_buffer( vertices, sizeof( vertices ) ), GFX::create_element_buffer( indices, sizeof( indices ) ), 5 );
         GFX::define_vao_attribute( vao, 0, 0, 2 );// vertex position
         GFX::define_vao_attribute( vao, 1, 2, 3 );// Color information
 
@@ -230,7 +229,7 @@ namespace bEngine::Core {
         glClearColor( background_color.red, background_color.green, background_color.blue, background_color.alpha );
     }
 
-    void framebuffer_size_callback( GLFWwindow *window, int width, int height ) {
+    void framebuffer_size_callback( [[maybe_unused]] GLFWwindow *window, int width, int height ) {
         glViewport( 0, width, 0, height );
     }
 }// namespace bEngine::Core

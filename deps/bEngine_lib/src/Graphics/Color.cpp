@@ -32,7 +32,7 @@ namespace bEngine::GFX {
             hex_code.erase( hex_code.begin(), hex_code.begin() + 1 );
 
         // Check that it's 6-8 characters of valid hex; if not, congratulations, you get white.
-        if ( hex_code.length() <= 8 && ( hex_code.length() % 2 ) == 0 && hex_code.length() >= 6 ) {
+        if ( hex_code.length() > 8 && ( hex_code.length() % 2 ) != 0 && hex_code.length() < 6 ) {
             WARN( std::string( "Invalid Hex: " + hex_code + " -> Defaulting to FFFFFF" ).c_str() )// Letting you know why its snow-white
             hex_code = "FFFFFF";
         }

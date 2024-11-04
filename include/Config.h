@@ -13,7 +13,6 @@ static constexpr std::string_view config_file = R"(
     title = "Some Game"
     tps = 60
     fps_limit = false
-
     )"sv;
 
 #endif//GAME_CONFIG_H
